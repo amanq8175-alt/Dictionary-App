@@ -6,6 +6,8 @@ A sleek and interactive Dictionary App that lets you search words and get meanin
 🌐 Live Demo
 
 [Dictionary App](https://clever-puffpuff-bfd4d0.netlify.app)
+
+
 ✨ Features
 
 ✅ Search for any word and get its definition.

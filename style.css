@@ -1,0 +1,312 @@
+ :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        /* Header & Search */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f1f2f6;
+            border-radius: 15px;
+            padding: 10px 20px;
+            margin-bottom: 30px;
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--primary);
+            background: #fff;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 16px;
+            color: var(--text-dark);
+        }
+
+        .search-box button {
+            border: none;
+            outline: none;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-box button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Word Info Area */
+        .word-info {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .word-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .word-text h1 {
+            font-size: 36px;
+            color: var(--text-dark);
+            text-transform: capitalize;
+        }
+
+        .word-text p {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        .sound-btn {
+            width: 50px;
+            height: 50px;
+            background: #f1f2f6;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            color: var(--primary);
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .sound-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: rotate(15deg);
+        }
+
+        /* Meanings Section */
+        .meaning-group {
+            margin-bottom: 25px;
+        }
+
+        .part-of-speech {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .definition-list {
+            list-style: none;
+        }
+
+        .definition-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .definition-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .example {
+            display: block;
+            margin-top: 5px;
+            color: var(--text-light);
+            font-size: 13px;
+            border-left: 3px solid var(--secondary);
+            padding-left: 10px;
+        }
+
+        /* Synonyms/Antonyms */
+        .extra-info {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .tag-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #f1f2f6;
+            color: var(--text-dark);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Error State */
+        .error-message {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-light);
+        }
+        .error-message img {
+            width: 80px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        /* Loading Spinner */
+        .loader {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 40px auto;
+        }
+
+        /* History Section */
+        .history-section {
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        .history-title {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .history-list {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+        .history-item {
+            background: #f1f2f6;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: var(--text-dark);
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .history-item:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 400px) {
+            .container { padding: 20px; }
+            .word-text h1 { font-size: 28px; }
+        }
